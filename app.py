@@ -106,3 +106,17 @@ if st.button("🔮 Predict Funding Amount"):
 
     except Exception as e:
         st.error("⚠️ Prediction Error. Please check model input order.")
+
+import streamlit as st
+import joblib
+import traceback
+
+try:
+    model = joblib.load("funding_model.pkl")
+    st.success("Model Loaded Successfully")
+except Exception as e:
+    st.error("Error loading model:")
+    st.text(str(e))
+    st.text(traceback.format_exc())
+
+
